@@ -15,7 +15,7 @@ const Header = () => {
 
 export default function App () {
   const happy = true
-  const fruits = ['🍇', '🍓', '🍍', '🥝', '🍉']
+  const fruits = ['🍇', '🍓', '🍍', '🥝']
   return (
     <>
       <Header/>

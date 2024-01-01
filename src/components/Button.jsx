@@ -1,8 +1,8 @@
 import PropTypes from 'prop-types'
 
-export default function Button(props) {
+export default function Button({text}) {
     return (
-        <button>{props.text}</button>
+        <button>{text}</button>
     )
 }
 Button.propTypes = {

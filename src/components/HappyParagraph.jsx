@@ -1,8 +1,8 @@
 import PropTypes from 'prop-types'
 
-export default function HappyParagraph(props) {
+export default function HappyParagraph({isHappy}) {
     return (
-        <p>{props.isHappy ? 'Soy un párrafo feliz' : 'Soy un párrafo triste'}</p>
+        <p>{isHappy ? 'Soy un párrafo feliz' : 'Soy un párrafo triste'}</p>
     )
 }
 

@@ -6,45 +6,29 @@ on:
       - main
 
 jobs:
-  build:
-    name: Build
-    runs-on: ubuntu-latest
-
-    steps:
-      - name: Checkout repo
-        uses: actions/checkout@v2
-
-      - name: Setup Node
-        uses: actions/setup-node@v1
-        with:
-          node-version: 20
-
-      - name: Install dependencies
-        uses: bahmutov/npm-install@v1
-
-      - name: Build project
-        run: pnpm run build
-
-      - name: Upload production-ready build files
-        uses: actions/upload-artifact@v2
-        with:
-          name: production-files
-          path: ./dist
-
   deploy:
     name: Deploy
-    needs: build
     runs-on: ubuntu-latest
-    if: github.ref == 'refs/heads/main'
+    permissions:
+      contents: write
+    concurrency:
+      group: ${{ github.workflow }}-${{ github.ref }}
+    env:
+      VITE_CLIENT_ID: ${{ secrets.VITE_CLIENT_ID }}
+      VITE_REDIRECT_URI: https://pythonesa.github.io/fundamentos-react
 
     steps:
-      - name: Download artifact
-        uses: actions/download-artifact@v2
+      - name: Checkout
+        uses: actions/checkout@v3
+      - name: Setup pnpm
+        uses: pnpm/action-setup@v2
         with:
-          name: production-files
-          path: ./dist
-
-      - name: Deploy to GitHub Pages
+          version: 8
+      - name: Install Dependencies
+        run: pnpm install
+      - name: Build
+        run: pnpm run build --base=/fundamentos-react/
+      - name: Deploy
         uses: peaceiris/actions-gh-pages@v3
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}

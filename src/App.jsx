@@ -6,12 +6,15 @@ import Fruits from './components/FruitsList'
 
 export default function App () {
   const happy = true
+  const fruits = ['🍇', '🍓', '🍍']
+  const fruits2 = ['🍉', '🍎', '🥝']
   return (
     <>
       <Header />
       <Button text={happy ? 'Botoncito feliz' : 'Botoncito triste'}/>
       <HappyParagraph isHappy={happy}/>
-      <Fruits />
+      <Fruits fruits={fruits}/>
+      <Fruits fruits={fruits2}/>
     </>
   )
 }

@@ -1,5 +1,7 @@
-export default function FruitsList() {
-    const fruits = ['🍇', '🍓', '🍍', '🥝', '🍉']
+import PropTypes from 'prop-types'
+
+export default function FruitsList({fruits}) {
+    
     return (
         <div className="panel">
         <ul>
@@ -11,4 +13,8 @@ export default function FruitsList() {
         </ul>
         </div>
     )
+}
+
+FruitsList.propTypes = {
+    fruits: PropTypes.array.isRequired
 }

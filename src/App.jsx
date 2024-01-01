@@ -1,24 +1,15 @@
-import imgReactnecita from './assets/images/Reactnecita.png'
 import Button from './components/Button'
 import HappyParagraph from './components/HappyParagraph'
+import Header from './components/header/HeaderContainer'
 
 
-const Header = () => {
-  const title = 'Hola, soy Reactnecita!'
-  return(
-    <div className="head-container">
-      <img className="avatar" src={imgReactnecita} alt="Reactnecita's Avatar" />
-      <h1 className="text-center">{title}</h1>
-    </div>
-  )
-}
 
 export default function App () {
   const happy = true
   const fruits = ['🍇', '🍓', '🍍', '🥝']
   return (
     <>
-      <Header/>
+      <Header />
       <Button text={happy ? 'Botoncito feliz' : 'Botoncito triste'}/>
       <HappyParagraph isHappy={happy}/>
       <ul>

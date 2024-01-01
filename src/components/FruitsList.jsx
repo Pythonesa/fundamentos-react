@@ -1,6 +1,7 @@
 export default function FruitsList() {
     const fruits = ['🍇', '🍓', '🍍', '🥝', '🍉']
     return (
+        <div className="panel">
         <ul>
             {
                 fruits.map((fruit, id) => (
@@ -8,5 +9,6 @@ export default function FruitsList() {
                 ))
             }
         </ul>
+        </div>
     )
 }

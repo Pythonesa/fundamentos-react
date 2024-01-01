@@ -1,9 +1,9 @@
 import { useState } from "react"
 
 export default function ButtonState () {
-    let [count,setCount] = useState(0)
+    const [count,setCount] = useState(0)
     const handleClick = () => {
-        setCount(++count)
+        setCount(count + 1)
     }
     return (
         <button onClick={handleClick}>N² de clicks: {count}</button>
